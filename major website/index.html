@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY MART</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .hero {
+            padding: 100px 0 50px;
+            text-align: center;
+            background: #f9f9f9;
+        }
+        
+        .products {
+            padding: 50px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            border: 1px solid #eee;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 200px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .product-price {
+            font-weight: bold;
+            color: #e63946;
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .products {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+        
+        /* Video Ad Container */
+        .video-ad-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            position: relative;
+        }
+        
+        .video-ad-heading {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .video-ad {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .video-ad iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Call to Action */
+        .video-cta {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .shop-now-btn {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .shop-now-btn:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .video-ad-heading {
+                font-size: 20px;
+            }
+            
+            .shop-now-btn {
+                padding: 10px 25px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-ad-container {
+                margin: 10px auto;
+            }
+            
+            .video-ad-heading {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Your website header and navigation would go here -->
+    
+    <!-- Video Ad Section -->
+    <div class="video-ad-container">
+        <h2 class="video-ad-heading">Discover the MyMart Shopping Experience</h2>
+        <div class="video-ad">
+            <!-- Replace the YouTube embed URL with your actual promotional video -->
+            <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=0&mute=1&controls=1" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen></iframe>
+        </div>
+        <div class="video-cta">
+            <a href="/shop" class="shop-now-btn">Shop Now on MyMart</a>
+        </div>
+    </div>
+    
+    <!-- Rest of your website content would go here -->
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">MY MART</div>
+            <div class="mobile-menu">☰</div>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1><i><b>Welcome to MY MART</b></i></h1>
+            <p>Discover our curated collection of products</p>
+        </div>
+    </section>
+    
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="addcart.html" class="btn">Add to Cart</a>
+                <a href="payment.html" class="btn">BUY NOW</a> 
+            </div>
+        </div>
+        
+    </section>
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        
+    </section>
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        
+    </section>
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        
+    </section>
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        
+    </section>
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        
+    </section>
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        
+    </section>
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        
+    </section>
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        
+    </section>
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        
+    </section>
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        
+    </section>
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        
+    </section>
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        
+    </section>
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        
+    </section>
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        
+    </section>
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        
+    </section>
+    <section class="products container">
+        <div class="product-card">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product 1">
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">Minimal Watch</h3>
+                <p class="product-price">$129.99</p>
+                <a href="#" class="btn">Add to Cart</a>
+            </div>
+        </div>
+        
+    </section>
+</body>
+</html>
+</body>
+</html>

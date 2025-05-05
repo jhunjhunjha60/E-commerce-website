@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Order Tracking</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #8ca8ff;
+            font-family: Arial, sans-serif;
+        }
+
+        .tracking-container {
+            background: #e6ebf1;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 1000px;
+            margin: 100px auto;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .order-header span {
+            font-weight: bold;
+        }
+
+        .order-header a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .progress-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            right: 5%;
+            height: 6px;
+            background: #d0d0d0;
+            z-index: 0;
+            transform: translateY(-50%);
+            border-radius: 3px;
+        }
+
+        .progress-step {
+            background: #8e44ec;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        .progress-step.completed::after {
+            content: '';
+            position: absolute;
+            height: 6px;
+            background: #8e44ec;
+            left: 50%;
+            right: -50%;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: -1;
+            border-radius: 3px;
+        }
+
+        .progress-step:last-child {
+            background: #d0d0d0;
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .label {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .label i {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="tracking-container">
+        <div class="order-header">
+            <div>ORDER <a href="#">#Y34XDHR</a></div>
+            <div>
+                Expected Arrival 01/12/19<br>
+                USPS <span>234094567242423422898</span>
+            </div>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-step completed">✓</div>
+            <div class="progress-step completed">✓</div>
+            <div class="progress-step completed">✓</div>
+            <div class="progress-step">○</div>
+        </div>
+
+        <div class="progress-labels">
+            <div class="label">
+                <i>📝</i>
+                Order Processed
+            </div>
+            <div class="label">
+                <i>📦</i>
+                Order Shipped
+            </div>
+            <div class="label">
+                <i>🚚</i>
+                Order En Route
+            </div>
+            <div class="label">
+                <i>🏠</i>
+                Order Arrived
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
